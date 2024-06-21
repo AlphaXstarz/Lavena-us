@@ -5,11 +5,11 @@ dnspython
 ffmpeg-python
 gitpython
 hachoir
-motor==3.2.0
+motor==3.3.2
 ntgcalls
 pillow==9.5.0
 psutil
-py-tgcalls==1.1.0
+py-tgcalls==1.2.9
 pyrogram==2.0.106
 python-dotenv
 pyyaml
