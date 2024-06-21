@@ -334,7 +334,7 @@ async def maintenance_on():
         return
     return await onoffdb.insert_one({"on_off": 1})
 
-
+"""
 # from pytgcalls.types import AudioParameters, AudioQuality, VideoParameters, VideoQuality
 
 # async def save_audio_bitrate(chat_id: int, bitrate: str):
@@ -375,4 +375,4 @@ async def maintenance_on():
 #     elif str(mode) == "Medium":
 #         return VideoParameters.from_quality(VideoQuality.SD_480p)
 #     elif str(mode) == "Low":
-#         return VideoParameters.from_quality(VideoQuality.SD_360p)
+#         return VideoParameters.from_quality(VideoQuality.SD_360p)"""
