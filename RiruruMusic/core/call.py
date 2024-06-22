@@ -26,8 +26,8 @@ from RiruruMusic.utils.thumbnails import gen_thumb
 from RiruruMusic.utils.exceptions import AssistantErr
 from RiruruMusic.utils.stream.autoclear import auto_clean
 from RiruruMusic.utils.database import (
-    add_active_chat, add_active_video_chat, get_audio_bitrate, get_lang,
-    get_loop, get_video_bitrate, group_assistant, is_autoend, music_on,
+    add_active_chat, add_active_video_chat, get_lang,
+    get_loop, group_assistant, is_autoend, music_on,
     set_loop, remove_active_chat, remove_active_video_chat
 )
 from RiruruMusic.utils.database.assistantdatabase import get_assistant
@@ -132,9 +132,7 @@ class Call(PyTgCalls):
 
     async def skip_stream(self, chat_id: int, link: str, video: Union[bool, str] = None):
         assistant = await group_assistant(self, chat_id)
-        audio_stream_quality = await get_audio_bitrate(chat_id)
         if video:
-            video_stream_quality = await get_video_bitrate(chat_id)
             stream = MediaStream(
                 link,
                 audio_parameters=audio_stream_quality,
@@ -147,8 +145,6 @@ class Call(PyTgCalls):
 
     async def seek_stream(self, chat_id, file_path, to_seek, duration, mode):
         assistant = await group_assistant(self, chat_id)
-        audio_stream_quality = await get_audio_bitrate(chat_id)
-        video_stream_quality = await get_video_bitrate(chat_id)
         stream = (
             MediaStream(
                 file_path,
@@ -229,8 +225,6 @@ class Call(PyTgCalls):
         video: Union[bool, str] = None,
     ):
         assistant = await group_assistant(self, chat_id)
-        audio_stream_quality = await get_audio_bitrate(chat_id)
-        video_stream_quality = await get_video_bitrate(chat_id)
         if video:
             stream = MediaStream(
                 link,
@@ -291,8 +285,6 @@ class Call(PyTgCalls):
             user = check[0]["by"]
             original_chat_id = check[0]["chat_id"]
             streamtype = check[0]["streamtype"]
-            audio_stream_quality = await get_audio_bitrate(chat_id)
-            video_stream_quality = await get_video_bitrate(chat_id)
             videoid = check[0]["vidid"]
             check[0]["played"] = 0
             video = True if str(streamtype) == "video" else False
