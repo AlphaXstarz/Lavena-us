@@ -140,7 +140,7 @@ class Call(PyTgCalls):
                 video_parameters=video_stream_quality,
             )
         else:
-            stream = AudioPiped(link, audio_parameters=audio_stream_quality)
+            stream = MediaStream(link, audio_parameters=audio_stream_quality)
         await assistant.change_stream(chat_id, stream)
 
 
@@ -375,7 +375,7 @@ class Call(PyTgCalls):
                         video_parameters=video_stream_quality,
                     )
                     if str(streamtype) == "video"
-                    else AudioPiped(videoid, audio_parameters=audio_stream_quality)
+                    else MediaStream(videoid, audio_parameters=audio_stream_quality)
                 )
                 try:
                     await client.change_stream(chat_id, stream)
@@ -398,7 +398,7 @@ class Call(PyTgCalls):
                         video_parameters=video_stream_quality,
                     )
                 else:
-                    stream = AudioPiped(queued, audio_parameters=audio_stream_quality)
+                    stream = MediaStream(queued, audio_parameters=audio_stream_quality)
                 try:
                     await client.change_stream(chat_id, stream)
                 except Exception:
