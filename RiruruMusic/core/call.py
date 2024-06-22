@@ -14,11 +14,12 @@ from pyrogram.errors import (
     ChatAdminRequired, UserAlreadyParticipant, UserNotParticipant, InviteRequestSent, UserDeactivatedBan
 )
 
+from ntgcalls import TelegramServerError
 from pytgcalls import PyTgCalls
 from pytgcalls.types.stream import StreamAudioEnded
 from pytgcalls.types import AudioQuality, MediaStream, Update, VideoQuality
 from pytgcalls.types import JoinedGroupCallParticipant, LeftGroupCallParticipant, Update
-from pytgcalls.exceptions import AlreadyJoinedError, NoActiveGroupCall, TelegramServerError
+from pytgcalls.exceptions import AlreadyJoinedError, NoActiveGroupCall
 
 from RiruruMusic import LOGGER, YouTube, app
 from RiruruMusic.utils.thumbnails import gen_thumb
